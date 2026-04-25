@@ -2,12 +2,12 @@
 name: bartender-pantry
 description: >
   Use this skill whenever the user wants to make any bar pantry ingredient from scratch — syrups (simple,
-  rich, orgeat, grenadine, falernum, flavored), shrubs (drinking vinegars), tinctures, or bitters. Trigger
-  on any mention of DIY bar ingredients, home infusions, or cocktail building blocks, even if the user
-  doesn't use those exact words. Examples: "how do I make orgeat?", "I want a lavender syrup", "can I make
-  my own bitters?", "what's a shrub for whiskey?", "how do I infuse vodka with X?", "I want to capture
-  this flavor for cocktails." Always use this skill when bitters, shrubs, tinctures, or syrups come up —
-  including inside a cocktail recipe context.
+  rich, orgeat, grenadine, falernum, flavored), shrubs (drinking vinegars), tinctures, bitters, or infused
+  spirits. Trigger on any mention of DIY bar ingredients, home infusions, or cocktail building blocks, even
+  if the user doesn't use those exact words. Examples: "how do I make orgeat?", "I want a lavender syrup",
+  "can I make my own bitters?", "what's a shrub for whiskey?", "how do I infuse vodka with X?", "I want
+  to make a chili tequila", "I want to capture this flavor for cocktails." Always use this skill when
+  bitters, shrubs, tinctures, syrups, or infused spirits come up — including inside a cocktail recipe context.
 ---
 
 # Bartender's Pantry Skill
@@ -16,12 +16,13 @@ description: >
 
 Help users craft DIY bar pantry ingredients: **bitters**, **tinctures**, **shrubs**, and **syrups**. These are the building blocks of great cocktails — handmade versions are fresher, more customizable, and often far superior to commercial alternatives.
 
-This skill covers four core product types:
+This skill covers five core product types:
 
 1. **Syrups** — Simple syrups, flavored syrups, rich syrups, orgeat, grenadine, falernum, oleo saccharum, etc.
 2. **Shrubs** — Cold-process and hot-process drinking vinegars, fruit and herb shrubs
 3. **Tinctures** — Single-ingredient botanical infusions in high-proof spirit; building blocks for bitters
 4. **Bitters** — Complex multi-botanical infusions, blended and bittered; both cocktail and digestive bitters
+5. **Infused Spirits** — Full-bottle infusions of vodka, gin, whiskey, rum, tequila, mezcal, or any base spirit with fruits, herbs, spices, chiles, smoke, or botanicals
 
 Always deliver recipes using a **custom HTML widget** built with the `show_widget` visualizer tool. See the Widget Spec section below.
 
@@ -48,16 +49,19 @@ Always offer the **sous vide method** as the preferred option when appropriate, 
 | Shrubs | ✅ Great for cold-process-style with speed | ✅ Hot-process shrubs work well on stovetop |
 | Tinctures | ✅ Dramatically speeds up extraction (30 min vs. weeks) | ⚠️ Not applicable — tinctures use alcohol, not heat |
 | Bitters | ✅ Speeds up individual tincture extractions | ⚠️ Not applicable for alcohol-based; stovetop only for non-alcoholic bitters base |
+| Infused Spirits | ✅ Best for speed and precision — 1–3 hrs vs. days/weeks cold | ✅ Cold/room-temp maceration works well; slower but no equipment needed |
 
 **Sous vide parameters (general defaults):**
 - Syrups: 60°C (140°F) for 1–2 hours
 - Tinctures: 55°C (130°F) for 1–4 hours in mason jar (use high-proof spirit, 151+ proof)
 - Shrubs: 65°C (150°F) for 1.5 hours
+- Infused Spirits: 55°C (130°F) for 1–3 hours in sealed mason jar (delicate: 1 hr; bold spices/chiles: 2–3 hrs)
 
 **Stovetop parameters (general defaults):**
 - Syrups: Gentle simmer (not boil), 10–20 min; cool before straining
 - Shrubs (hot-process): Simmer fruit + sugar until broken down, then add vinegar off heat; cool and strain
 - Bitters blend step: Never heat — combine finished tinctures cold
+- Infused Spirits (cold maceration): Room temp or fridge, 1–7 days depending on ingredient; shake or stir daily; taste frequently
 
 ### 3. Recommend Variations (for open-ended queries)
 
@@ -79,7 +83,7 @@ After every recipe widget, briefly note 2–3 cocktails this ingredient shines i
 Always include in the notes:
 - Storage vessel (airtight glass jar or bottle)
 - Refrigeration requirements
-- Shelf life (syrups: 2–4 weeks refrigerated; shrubs: 2–3 months; tinctures: 6+ months; bitters: 1+ year)
+- Shelf life (syrups: 2–4 weeks refrigerated; shrubs: 2–3 months; tinctures: 6+ months; bitters: 1+ year; infused spirits: 1–3 months)
 - Signs of spoilage to watch for
 
 ---
@@ -148,6 +152,76 @@ Single-ingredient infusions in high-proof neutral spirit (Everclear 151 or simil
 - Vanilla bean: 2 beans split — 2 hours sous vide or 2 weeks cold
 - Dried cherry/plum: 30g — 2 hours sous vide
 - Black pepper: 5g cracked — 1 hour
+
+### Infused Spirits
+
+Full-bottle infusions using any base spirit. Unlike tinctures (which use high-proof neutral spirit and are used by the dash), infused spirits use standard-proof spirits (80–100 proof) and are used by the pour — swapped 1:1 into cocktails or sipped on their own.
+
+**Base spirit pairing guide:**
+- Vodka — neutral canvas; lets the infusion ingredient shine cleanly; ideal for fruit, herb, floral, vegetable
+- Gin — already botanical; add complementary layers (cucumber, elderflower, stone fruit, extra citrus)
+- White rum — light, slightly sweet; pairs with tropical fruit, vanilla, coconut, cinnamon
+- Dark/aged rum — rich, caramel notes; pairs with dried fruit, spice, coffee, chocolate
+- Tequila (blanco) — grassy, bright; pairs with jalapeño, cucumber, tropical fruit, herbs
+- Mezcal — smoky, complex; pairs with chiles, dried fruit, cacao, mole spices
+- Whiskey (bourbon) — sweet, oaky; pairs with stone fruit, vanilla, cherry, pecan, spice
+- Whiskey (rye) — spicy, dry; pairs with ginger, black pepper, citrus peel, herbs
+- Brandy/Cognac — grape-forward; pairs with citrus, stone fruit, vanilla, warming spice
+
+**Sous vide method (preferred for speed and control):**
+1. Combine spirit + ingredients in a sealed mason jar or vacuum bag
+2. Cook at 55°C (130°F) for 1–3 hours
+3. Taste every 30 minutes after the first hour — extraction happens fast
+4. Strain through fine mesh or cheesecloth; press solids
+5. Rest 30 minutes before final taste and bottling — flavors integrate after straining
+
+**Cold maceration method (no equipment needed):**
+1. Combine spirit + ingredients in a clean glass jar with a tight lid
+2. Store at room temperature (or fridge for delicate ingredients like fresh herbs, cucumber)
+3. Steep 1–7 days — taste daily and strain as soon as the flavor is right
+4. Over-infusion is the main risk: bitter, astringent, or harsh notes
+5. Strain through fine mesh; bottle and label with date
+
+**Ingredient-specific guidance:**
+
+| Ingredient | Sous Vide Time | Cold Maceration | Notes |
+|---|---|---|---|
+| Fresh chiles (jalapeño, serrano) | 30–45 min | 2–6 hours | Taste every 15 min sous vide — heat builds fast |
+| Dried chiles (ancho, chipotle) | 1–1.5 hrs | 1–2 days | Richer, smokier than fresh |
+| Fresh citrus peel | 1 hr | 2–3 days | Zest only — avoid pith or it turns bitter |
+| Dried citrus peel | 1.5 hrs | 3–5 days | More concentrated; use less |
+| Fresh berries | 1–1.5 hrs | 2–4 days | Muddle lightly before infusing |
+| Stone fruit (peach, cherry, plum) | 1.5–2 hrs | 3–5 days | Pit and halve; remove skins optional |
+| Tropical fruit (pineapple, mango) | 1–1.5 hrs | 2–3 days | Rough chop; ripe fruit preferred |
+| Fresh herbs (basil, mint, tarragon) | 30–45 min | 4–12 hours | Very fast; fridge preferred for cold mac |
+| Woody herbs (rosemary, thyme) | 45–60 min | 1–2 days | Strong — use sparingly |
+| Vanilla bean | 1.5–2 hrs | 1–2 weeks | Split and scrape for sous vide |
+| Whole spices (cardamom, clove, cinnamon) | 1–2 hrs | 3–7 days | Toast lightly first for deeper flavor |
+| Coffee beans (coarsely cracked) | 45–60 min | 8–16 hours | Taste frequently — goes bitter fast |
+| Cacao nibs | 1–1.5 hrs | 2–4 days | Dry roast first for richness |
+| Cucumber | 45 min | 4–8 hours | Refrigerate always; mild and fast |
+| Ginger (fresh, sliced) | 45–60 min | 1–2 days | Builds heat quickly; taste often |
+| Smoke (liquid smoke or smoked wood chips) | N/A | 1–4 hours | Add 1–2 drops liquid smoke, or use smoking gun |
+
+**Ratios (general starting points per 750ml bottle):**
+- Fresh fruit: 150–250g
+- Dried fruit: 60–100g
+- Fresh herbs: 20–40g (a small handful)
+- Whole spices: 10–20g
+- Fresh chiles: 1–3 whole (adjust to heat preference)
+- Coffee beans: 30–50g coarsely cracked
+
+**Layered infusions (2+ ingredients):**
+- Infuse bold/slow ingredients first, then add delicate ones in the last 30–60 minutes
+- Example: Spiced rum — add cinnamon + clove for 1.5 hrs, then vanilla + orange peel for final 45 min
+- Never combine fresh herbs with chiles sous vide — extract separately and blend
+
+**Storage and shelf life:**
+- Bottle in clean glass with a tight seal
+- Store in a cool, dark place (no refrigeration needed for most spirits)
+- Shelf life: 1–3 months at room temperature; flavors may fade or shift over time
+- Fresh herb and cucumber infusions: refrigerate and use within 2 weeks
+- Discard if flavor turns harsh, cloudy (beyond expected fruit haze), or smells off
 
 ### Bitters
 
@@ -352,6 +426,12 @@ renderSteps();
 
 **"What's the fastest way to make a vanilla tincture?"**
 → Tincture. Sous vide at 55°C for 2 hours vs. 2–3 weeks cold-process. Deliver widget with both methods in the toggle.
+
+**"I want to make a jalapeño tequila"**
+→ Infused spirit. Blanco tequila + fresh jalapeños. Warn that heat extracts fast — 30–45 min sous vide or 2–4 hours cold; taste every 15 min. Deliver widget with both methods. Suggest using in a Spicy Margarita or Spicy Paloma.
+
+**"How do I make a vanilla bourbon?"**
+→ Infused spirit. Split vanilla beans + bourbon, sous vide 1.5–2 hrs or cold macerate 1–2 weeks. Deliver widget. Suggest in a Vanilla Old Fashioned or sipped neat.
 
 **"I want to make a cocktail syrup for fall — something warm and spiced"**
 → Flavor/mood query. Suggest 2–3 options: chai spice syrup, cinnamon-demerara, or a mulled apple syrup. Brief pitch, then deliver the top pick or let user choose.
